@@ -34,6 +34,7 @@ async function main() {
   //4. Get all articles
   //   const articles = await prisma.article.findMany();
   //   console.log(articles);
+
   //5. Create user and article and associate them
   //   const user = await prisma.user.create({
   //     data: {
@@ -49,8 +50,21 @@ async function main() {
   //   });
   //   console.log(user);
 
+  //6. Create another article and associate it with user
+  // const article = await prisma.article.create({
+  //   data: {
+  //     title: "Sarada's article",
+  //     body: "This is Saradas sample article.",
+  //     author: {
+  //       connect: {
+  //         id: 2,
+  //       },
+  //     },
+  //   },
+  // });
+  // console.log(article);
 
-  //6. Get users with articles
+  //7. Get users with articles
   //   const users = await prisma.user.findMany({
   //     include: {
   //       articles: true,
@@ -58,21 +72,37 @@ async function main() {
   //   });
   //   console.log(users);
 
-  //7. Create another article and associate it with user
-    // const article = await prisma.article.create({
-    //   data: {
-    //     title: "Sarada's article",
-    //     body: "This is Saradas sample article.",
-    //     author: {
-    //       connect: {
-    //         id: 2,
-    //       },
-    //     },
-    //   },
-    // });
-    // console.log(article);
+  //8. Loop over Saradas article
 
+  //   users.forEach((user) => {
+  //     console.log(`User: ${user.name}, Email: ${user.email}`);
+  //     console.log("Articles: ");
+  //     user.articles.forEach((article) => {
+  //       console.log(`- Title: ${article.title}, Body: ${article.body}`);
+  //     });
+  //     console.log("\n");
+  //   });
 
+  //Update data
+
+  //   const user = await prisma.user.update({
+  //     where: {
+  //       id: 1,
+  //     },
+  //     data: {
+  //       name: "Janardan Narayan Das",
+  //     },
+  //   });
+
+  //   console.log(user);
+
+  // Remove data
+  const article = await prisma.article.delete({
+    where: {
+      id: 3,
+    },
+  });
+  console.log(article);
 }
 
 main()
